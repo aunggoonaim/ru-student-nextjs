@@ -1,11 +1,42 @@
 import type { NextPage } from 'next'
+import { useEffect, useState } from 'react';
+import { Input } from 'antd';
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Snowflakes from 'magic-snowflakes';
+import Link from 'next/link';
 
 const HomePage: NextPage = () => {
+
+  const { TextArea } = Input;
+
+  const [loginState, setLoginState] = useState(false)
+
+  useEffect(() => {
+    const token = window.localStorage.getItem('access_token');
+    if (token) {
+      setLoginState(true);
+    }
+    const snowflakes = new Snowflakes({
+      maxSize: 50,
+      count: 40
+    });
+    return () => snowflakes.destroy();
+  }, [])
+
   return (
-    <div className={styles.container}>
+    <>
+      <nav className={styles.navbar}>
+        <Image className={styles.imgbanner} src="/assets/banner.png" alt="Banner Logo" width={240} height={55} />
+        {
+          !loginState &&
+          <Link href={''}>
+            <a className={styles.loginlink}>เข้าสู่ระบบ</a>
+          </Link>
+        }
+      </nav>
+
       <Head>
         <title>RU Community</title>
         <meta name="description" content="RU Community, รามคำแหงคอมมิวนิตี้ โซเชียลสำหรับนักศึกษารามคำแหง, แหล่งรวมข้อมูลรามคำแหง" />
@@ -17,60 +48,66 @@ const HomePage: NextPage = () => {
         <meta property="og:image" content="https://www.ru-community.com/assets/page.webp" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <div className={styles.container}>
+        <main className={styles.main}>
+          <TextArea className={styles.textarea} rows={4} placeholder={'คุณกำลังคิดอะไรอยู่ ?'} />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+          <div className="mt-6">
+            <div className="max-w rounded overflow-hidden shadow-lg">
+              <Image className="w-full" src="/assets/mountain.webp" alt="Mountain" width={350} height={200} />
+              <div className="px-6 py-2">
+                <div className="font-bold text-xl mb-2">วิว & ทิวทัศน์</div>
+                <p className="text-gray-700 text-base">
+                  ข้อความสำหรับทดสอบระบบพารากราฟ.
+                </p>
+              </div>
+              <div className="px-6 pt-2 pb-2">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+              </div>
+            </div>
+          </div>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <div className="mt-6">
+            <div className="max-w rounded overflow-hidden shadow-lg">
+              <Image className="w-full" src="/assets/mountain_2.webp" alt="Mountain" width={350} height={200} />
+              <div className="px-6 py-2">
+                <div className="font-bold text-xl mb-2">วิว & ทิวทัศน์</div>
+                <p className="text-gray-700 text-base">
+                  ข้อความสำหรับทดสอบระบบพารากราฟ.
+                </p>
+              </div>
+              <div className="px-6 pt-2 pb-2">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+              </div>
+            </div>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <div className="mt-6">
+            <div className="max-w rounded overflow-hidden shadow-lg">
+              <Image className="w-full" src="/assets/mountain_3.webp" alt="Mountain" width={350} height={200} />
+              <div className="px-6 py-2">
+                <div className="font-bold text-xl mb-2">วิว & ทิวทัศน์</div>
+                <p className="text-gray-700 text-base">
+                  ข้อความสำหรับทดสอบระบบพารากราฟ.
+                </p>
+              </div>
+              <div className="px-6 pt-2 pb-2">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+              </div>
+            </div>
+          </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+          <div className={styles.endline}></div>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+        </main>
+      </div>
+    </>
   )
 }
 
