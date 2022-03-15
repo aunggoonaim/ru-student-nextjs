@@ -40,7 +40,7 @@ const HomePage: NextPage = () => {
       <Head>
         <title>RU Community</title>
         <meta name="description" content="RU Community, รามคำแหงคอมมิวนิตี้ โซเชียลสำหรับนักศึกษารามคำแหง, แหล่งรวมข้อมูลรามคำแหง" />
-        <link rel="icon" href="/icon-192x192.png" />
+        <link rel="icon" href="/icon.png" />
         <meta property="og:url" content="https://www.ru-community.com" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="RU Community - หน้าแรก" />
